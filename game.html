@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play - Water Quest Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-content">
+            <!-- Game Header -->
+            <div class="game-header">
+                <div class="level-indicator">Level <span id="current-level">1</span></div>
+                <div class="timer">
+                    <img src="img/logo_can.png" alt="Charity Water" class="timer-logo">
+                    <span id="time-elapsed">0:00</span>
+                </div>
+            </div>
+
+            <!-- Score Display -->
+            <div class="score-display">
+                <div class="score-item">
+                    <span class="score-label">Score:</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+            </div>
+
+            <!-- Game Canvas/Board -->
+            <div class="game-board" id="game-board">
+                <!-- Motivation Display Area -->
+                <div class="motivation-display">
+                    <div class="motivation-text"></div>
+                    <div class="motivation-points"></div>
+                </div>
+                
+                <!-- Game tiles will be dynamically generated here -->
+                <div class="game-placeholder">
+                    <img src="img/Water-Mania-logo.png" alt="Game Logo" class="game-logo-small">
+                    <p>Game board will load here</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Win Overlay -->
+        <div id="win-overlay" class="overlay" style="display: none;">
+            <div class="overlay-content win-content">
+                <h2>Level Complete!</h2>
+                <div class="win-stars">⭐⭐⭐</div>
+                <div class="win-stats">
+                    <p>Score: <span id="final-score">0</span></p>
+                    <p>Time: <span id="final-time">0:00</span></p>
+                </div>
+                <button class="overlay-button next-button" onclick="nextLevel()">Next Level</button>
+                <button class="overlay-button menu-button" onclick="quitGame()">Back to Menu</button>
+            </div>
+        </div>
+
+        <!-- Game Over Overlay -->
+        <div id="gameover-overlay" class="overlay" style="display: none;">
+            <div class="overlay-content">
+                <h2>Time's Up!</h2>
+                <p>Better luck next time!</p>
+                <button class="overlay-button retry-button" onclick="restartLevel()">Try Again</button>
+                <button class="overlay-button quit-button" onclick="quitGame()">Quit to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+        // Ensure DOM is loaded before initializing game
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log('DOM fully loaded');
+            });
+        }
+    </script>
+</body>
+</html>

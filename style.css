@@ -1,0 +1,231 @@
+/* ...existing code... */
+#game-container {
+  width: 412px;
+  height: 732px;
+  margin: 0 auto;
+  background: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  position: relative;
+  top: 40px;
+  background-image: url('img/base.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Add scrollable wrapper for levels */
+#levels-scroll-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 72px); /* subtract nav bar height */
+  overflow-y: auto;
+  padding-bottom: 0; /* remove extra padding */
+}
+
+#game-logo {
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Optionally, set a max-width if needed */
+  /* max-width: 80%; */
+}
+
+#nav-bar {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 4px); /* Slightly inset to avoid clipping */
+  height: 72px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom-left-radius: 18px; /* Increased radius */
+  border-bottom-right-radius: 18px; /* Increased radius */
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  border: 2px solid #007BFF;
+}
+
+.nav-item {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Add this for the home icon container */
+.nav-item.home {
+  flex: none;
+  width: 72px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item.leaderboard {
+  flex: none;
+  width: 72px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item.profile {
+  flex: none;
+  width: 72px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item.charitywater {
+  flex: none;
+  width: 72px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item img {
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+}
+
+.nav-separator {
+  width: 2px;
+  height: 100%;
+  background: rgba(0, 123, 255, 0.4);
+  border-radius: 1px;
+  margin: 0 8px;
+  align-self: stretch;
+}
+
+#level1-container,
+#level2-container,
+#level3-container,
+#level4-container,
+#level5-container {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 365px;
+  height: 165px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px 8px rgba(255, 201, 7, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #003366;
+  border: 1px solid #FFC907;
+  font-family: 'Baskerville', serif;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Adjust top margin for first container */
+#level1-container {
+  margin-top: 150px;
+}
+
+/* Remove absolute positioning from individual containers */
+#level2-container,
+#level3-container,
+#level4-container,
+#level5-container {
+  position: relative;
+  top: 0;
+}
+
+.lock-icon-container {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-icon-container img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.level-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 239, 181, 0.4);
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Remove old leaderboard-specific styles */
+
+#leaderboard-container {
+  width: 412px;
+  height: 732px;
+  margin: 0 auto;
+  background: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  position: relative;
+  top: 40px;
+  background-image: url('img/base.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+#leaderboard-container #game-logo {
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+#leaderboard-container #nav-bar {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 4px);
+  height: 72px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  border: 2px solid #007BFF;
+  z-index: 10;
+}
+
+

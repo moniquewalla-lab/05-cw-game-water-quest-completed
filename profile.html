@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Water Quest Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="profile-content">
+            <!-- Profile Header Card -->
+            <div class="profile-header-card">
+                <div class="profile-avatar-circle">
+                    <img src="img/dinosaur.png" alt="Profile Avatar">
+                </div>
+                <h2 class="profile-name">User Name</h2>
+                <button class="edit-profile-btn">
+                    <img src="img/pencil.png" alt="Edit">
+                    Edit Profile
+                </button>
+            </div>
+
+            <!-- Stats Cards Grid -->
+            <div class="stats-grid">
+                <div class="stat-card rank-card">
+                    <div class="stat-label">Rank</div>
+                    <div class="rank-display">
+                        <img src="img/droplet (leaderboard).png" alt="Droplet" class="rank-droplet-icon">
+                        <span class="rank-value">0</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Fastest Time</div>
+                    <div class="stat-value">0:00</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">High Score</div>
+                    <div class="stat-value">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Levels Completed</div>
+                    <div class="stat-value">0/5</div>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <h3>Level Progress</h3>
+                <div class="progress-bars">
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Level 1</span>
+                            <span class="progress-percentage">100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Level 2</span>
+                            <span class="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Level 3</span>
+                            <span class="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Level 4</span>
+                            <span class="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Level 5</span>
+                            <span class="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="achievements-section">
+                <h3>Achievements</h3>
+                <div class="achievements-list">
+                    <div class="achievement-badge locked" id="first-win-badge">
+                        <div class="badge-icon">🏆</div>
+                        <div class="badge-name">First Win</div>
+                        <div class="badge-description">Complete your first level</div>
+                    </div>
+                    <div class="achievement-badge locked" id="speed-demon-badge">
+                        <div class="badge-icon">⚡</div>
+                        <div class="badge-name">Speed Demon</div>
+                        <div class="badge-description">Complete any level in under 30 seconds</div>
+                    </div>
+                    <div class="achievement-badge locked" id="perfect-score-badge">
+                        <div class="badge-icon">🎯</div>
+                        <div class="badge-name">Perfect Score</div>
+                        <div class="badge-description">Complete any level with 100% accuracy</div>
+                    </div>
+                    <div class="achievement-badge locked" id="water-master-badge">
+                        <div class="badge-icon">💧</div>
+                        <div class="badge-name">Water Master</div>
+                        <div class="badge-description">Complete all 5 levels</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav-bar">
+            <div class="nav-item home"><img src="img/home-line.png" alt="Home"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item leaderboard"><img src="img/leaderboard-line.png" alt="Leaderboard"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item profile"><img src="img/profile-fill.png" alt="Profile"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item charitywater"><img src="img/charity_water-line.png" alt="Charity:Water"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Navigation click handlers
+        document.querySelector('.nav-item.home').onclick = function() {
+            window.location.href = 'index.html';
+        };
+        document.querySelector('.nav-item.leaderboard').onclick = function() {
+            window.location.href = 'leaderboard.html';
+        };
+        document.querySelector('.nav-item.profile').onclick = function() {
+            window.location.href = 'profile.html';
+        };
+        document.querySelector('.nav-item.charitywater').onclick = function() {
+            window.location.href = 'charitywater.html';
+        };
+
+        // Load and display achievements
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstWinBadge = document.getElementById('first-win-badge');
+            const speedDemonBadge = document.getElementById('speed-demon-badge');
+            const perfectScoreBadge = document.getElementById('perfect-score-badge');
+            const waterMasterBadge = document.getElementById('water-master-badge');
+            
+            // Check if achievements are unlocked
+            let achievements = JSON.parse(localStorage.getItem('achievements') || '{}');
+            
+            if (achievements['first-win']?.unlocked) {
+                firstWinBadge.classList.remove('locked');
+            } else {
+                firstWinBadge.classList.add('locked');
+            }
+            
+            if (achievements['speed-demon']?.unlocked) {
+                speedDemonBadge.classList.remove('locked');
+            } else {
+                speedDemonBadge.classList.add('locked');
+            }
+            
+            if (achievements['perfect-score']?.unlocked) {
+                perfectScoreBadge.classList.remove('locked');
+            } else {
+                perfectScoreBadge.classList.add('locked');
+            }
+            
+            if (achievements['water-master']?.unlocked) {
+                waterMasterBadge.classList.remove('locked');
+            } else {
+                waterMasterBadge.classList.add('locked');
+            }
+
+            // Load level progress from localStorage
+            const levelsCompleted = JSON.parse(localStorage.getItem('levelsCompleted') || '[]');
+            const progressItems = document.querySelectorAll('.progress-item');
+            
+            progressItems.forEach((item, index) => {
+                const levelNumber = index + 1;
+                const isCompleted = levelsCompleted.includes(levelNumber);
+                const percentage = isCompleted ? 100 : 0;
+                
+                const percentageSpan = item.querySelector('.progress-percentage');
+                const progressFill = item.querySelector('.progress-fill');
+                
+                percentageSpan.textContent = percentage + '%';
+                progressFill.style.width = percentage + '%';
+            });
+
+            // Update levels completed stat
+            const levelsCompletedStat = document.querySelector('.stat-card:nth-child(4) .stat-value');
+            if (levelsCompletedStat) {
+                levelsCompletedStat.textContent = levelsCompleted.length + '/5';
+            }
+        });
+    </script>
+</body>
+</html>

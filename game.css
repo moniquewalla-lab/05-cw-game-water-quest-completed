@@ -1,0 +1,339 @@
+#game-content {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 15px 10px; /* Reduced padding for a shorter header */
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    width: calc(100% - 30px); /* Account for parent padding */
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.level-indicator {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1565C0;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    /* Ensure no extra space for text below image */
+}
+
+.timer-logo {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+    /* Remove any text spacing */
+}
+
+.timer-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.score-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    width: calc(100% - 30px); /* Account for parent padding */
+    max-width: 400px;
+}
+
+.score-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.score-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1565C0;
+}
+
+.game-board {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    margin-top: 60px;
+    position: relative;
+    overflow: visible;
+    border: 2px solid #FFC907;
+    width: calc(100% - 30px); /* Account for parent padding */
+    max-width: 400px;
+    max-height: 600px;
+    aspect-ratio: unset;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+    padding: 120px 25px 80px 25px; /* Increased top padding from 80px to 120px */
+    box-sizing: border-box;
+}
+
+.game-square {
+    background: white;
+    border: 2px solid #ECECEC;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    min-width: 0;
+    aspect-ratio: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.game-square:hover {
+    transform: scale(1.05);
+}
+
+.game-square:active {
+    transform: scale(0.95);
+}
+
+.game-square.blue {
+    background: #2196F3; /* Blue color for target */
+    border-color: #00A8E8;
+    border-width: 3px;
+}
+
+.game-square.green {
+    background: #4CAF50; /* Green color for wrong choice */
+    border-color: #78AF3C;
+    border-width: 3px;
+}
+
+.game-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+}
+
+.game-logo-small {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+    opacity: 0.3;
+}
+
+.game-placeholder p {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* ===========================
+   OVERLAY FIX (MAIN CHANGE)
+=========================== */
+
+/* Remove the broken selector:
+   .overlay[style*="display: flex"] { ... }
+   It was preventing the overlay from showing.
+*/
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: none; /* JS sets to 'flex' */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Your existing popup styling — unchanged */
+.overlay-content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    max-width: 300px;
+    width: 85%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-content h2 {
+    color: #1565C0;
+    margin: 0 0 20px 0;
+    font-size: 1.8rem;
+}
+
+.overlay-content p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.overlay-button {
+    width: 100%;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.next-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.restart-overlay-button, .retry-button {
+    background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+    color: white;
+}
+
+.quit-button, .menu-button {
+    background: white;
+    color: #1565C0;
+    border: 2px solid #1565C0;
+}
+
+.overlay-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.overlay-button:active {
+    transform: translateY(0);
+}
+
+/* Win Overlay Specific Styles */
+.win-content {
+    padding: 35px 25px;
+}
+
+.win-stars {
+    font-size: 2.5rem;
+    margin: 15px 0;
+    letter-spacing: 8px;
+}
+
+.win-stats {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.win-stats p {
+    margin: 6px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.win-stats span {
+    color: #1565C0;
+    font-weight: bold;
+}
+
+/* Motivational Message Area */
+.motivation-display {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.motivation-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1565C0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 0.5s ease-in-out;
+}
+
+.motivation-points {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-top: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 0.5s ease-in-out;
+}
+
+.motivation-text.perfect {
+    color: #FFD700;
+    text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.5);
+}
+
+.motivation-text.fantastic {
+    color: #FF6B6B;
+    text-shadow: 2px 2px 8px rgba(255, 107, 107, 0.5);
+}
+
+.motivation-text.great {
+    color: #4CAF50;
+    text-shadow: 2px 2px 8px rgba(76, 175, 80, 0.5);
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.1) translateY(0);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+    }
+}

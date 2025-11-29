@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity:Water - Water Quest Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="charitywater.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="charitywater-content">
+            <div class="yellow-header">
+                <h1 class="page-title">
+                    <img src="img/cw_logo.png" alt="Charity:Water Logo" class="title-logo">
+                </h1>
+            </div>
+            
+            <div class="charity-section">
+                <h1>About Charity:Water</h1>
+                <p>charity: water is a non-profit organization bringing clean and safe drinking water to people in developing countries.</p>
+                
+                <div class="charity-stats">
+                    <div class="charity-stat">
+                        <div class="stat-number">785M</div>
+                        <div class="stat-description">People lack access to clean water</div>
+                    </div>
+                    <div class="charity-stat">
+                        <div class="stat-number">16M+</div>
+                        <div class="stat-description">People served with clean water</div>
+                    </div>
+                </div>
+                
+                <div class="charity-impact">
+                    <h2>Your Impact</h2>
+                    <p>By playing Water Quest, you're raising awareness about the global water crisis. Every level you complete helps spread the message about the importance of clean water access.</p>
+                </div>
+                
+                <div class="charity-cta">
+                    <button class="donate-button" onclick="window.open('https://www.charitywater.org/donate', '_blank')">Donate to Charity:Water</button>
+                    <button class="learn-button" onclick="window.open('https://www.charitywater.org', '_blank')">Learn More</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav-bar">
+            <div class="nav-item home"><img src="img/home-line.png" alt="Home"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item leaderboard"><img src="img/leaderboard-line.png" alt="Leaderboard"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item profile"><img src="img/profile-line.png" alt="Profile"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item charitywater"><img src="img/charity_water-fill.png" alt="Charity:Water"></div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation click handlers
+        document.querySelector('.nav-item.home').onclick = function() {
+            window.location.href = 'index.html';
+        };
+        document.querySelector('.nav-item.leaderboard').onclick = function() {
+            window.location.href = 'leaderboard.html';
+        };
+        document.querySelector('.nav-item.profile').onclick = function() {
+            window.location.href = 'profile.html';
+        };
+        document.querySelector('.nav-item.charitywater').onclick = function() {
+            window.location.href = 'charitywater.html';
+        };
+    </script>
+</body>
+</html>

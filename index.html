@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quest Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="levels-scroll-area">
+            <div class="hero-section">
+                <img id="game-logo" src="img/Water-Mania-logo.png" alt="Water Mania Logo">
+                <p class="hero-subtitle">Tap to Save Water!</p>
+            </div>
+
+            <div class="levels-container">
+                <!-- Level 1 -->
+                <div class="level-card unlocked" id="level1-card">
+                    <div class="level-badge">
+                        <span class="level-number">1</span>
+                    </div>
+                    <div class="level-info">
+                        <h3>Level 1</h3>
+                        <p class="level-desc">Beginner's Challenge</p>
+                        <div class="level-stats">
+                            <span>⚡ 4s</span>
+                            <span>🎯 20 pts</span>
+                        </div>
+                    </div>
+                    <div class="level-status">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="level-card locked" id="level2-card">
+                    <div class="level-overlay-lock"></div>
+                    <div class="level-badge locked-badge">
+                        <span class="level-number">2</span>
+                    </div>
+                    <div class="level-info">
+                        <h3>Level 2</h3>
+                        <p class="level-desc">Rising Waters</p>
+                        <div class="level-stats">
+                            <span>⚡ 3.5s</span>
+                            <span>🎯 30 pts</span>
+                        </div>
+                    </div>
+                    <div class="level-status">
+                        <img src="img/lock-2-line.png" class="lock-icon" alt="Locked">
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="level-card locked" id="level3-card">
+                    <div class="level-overlay-lock"></div>
+                    <div class="level-badge locked-badge">
+                        <span class="level-number">3</span>
+                    </div>
+                    <div class="level-info">
+                        <h3>Level 3</h3>
+                        <p class="level-desc">Rapid Flow</p>
+                        <div class="level-stats">
+                            <span>⚡ 3s</span>
+                            <span>🎯 40 pts</span>
+                        </div>
+                    </div>
+                    <div class="level-status">
+                        <img src="img/lock-2-line.png" class="lock-icon" alt="Locked">
+                    </div>
+                </div>
+
+                <!-- Level 4 -->
+                <div class="level-card locked" id="level4-card">
+                    <div class="level-overlay-lock"></div>
+                    <div class="level-badge locked-badge">
+                        <span class="level-number">4</span>
+                    </div>
+                    <div class="level-info">
+                        <h3>Level 4</h3>
+                        <p class="level-desc">Flood Warning</p>
+                        <div class="level-stats">
+                            <span>⚡ 2.5s</span>
+                            <span>🎯 50 pts</span>
+                        </div>
+                    </div>
+                    <div class="level-status">
+                        <img src="img/lock-2-line.png" class="lock-icon" alt="Locked">
+                    </div>
+                </div>
+
+                <!-- Level 5 -->
+                <div class="level-card locked" id="level5-card">
+                    <div class="level-overlay-lock"></div>
+                    <div class="level-badge locked-badge">
+                        <span class="level-number">5</span>
+                    </div>
+                    <div class="level-info">
+                        <h3>Level 5</h3>
+                        <p class="level-desc">Ultimate Crisis</p>
+                        <div class="level-stats">
+                            <span>⚡ 2s</span>
+                            <span>🎯 60 pts</span>
+                        </div>
+                    </div>
+                    <div class="level-status">
+                        <img src="img/lock-2-line.png" class="lock-icon" alt="Locked">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav-bar">
+            <div class="nav-item home"><img src="img/home-fill.png" alt="Home"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item leaderboard"><img src="img/leaderboard-line.png" alt="Leaderboard"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item profile"><img src="img/profile-line.png" alt="Profile"></div>
+            <div class="nav-separator"></div>
+            <div class="nav-item charitywater"><img src="img/charity_water-line.png" alt="Charity:Water"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Navigation click handlers
+        document.querySelector('.nav-item.home').onclick = function() {
+            window.location.href = 'index.html';
+        };
+        document.querySelector('.nav-item.leaderboard').onclick = function() {
+            window.location.href = 'leaderboard.html';
+        };
+        document.querySelector('.nav-item.profile').onclick = function() {
+            window.location.href = 'profile.html';
+        };
+        document.querySelector('.nav-item.charitywater').onclick = function() {
+            window.location.href = 'charitywater.html';
+        };
+
+        // Level unlocking logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const unlockedLevel = parseInt(localStorage.getItem('unlockedLevel') || '1');
+            
+            for (let i = 1; i <= 5; i++) {
+                const card = document.getElementById(`level${i}-card`);
+                if (i <= unlockedLevel) {
+                    card.classList.remove('locked');
+                    card.classList.add('unlocked');
+                    card.onclick = function() {
+                        window.location.href = `level-start.html?level=${i}`;
+                    };
+                } else {
+                    card.classList.remove('unlocked');
+                    card.classList.add('locked');
+                    card.onclick = null;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

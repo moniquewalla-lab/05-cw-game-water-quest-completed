@@ -1,0 +1,156 @@
+#leaderboard-content {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 365px;
+    height: calc(100% - 212px); /* 150px top + 62px bottom (52px remaining space + 10px overlap) */
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #FFC907;
+    box-shadow: 0 8px 24px 8px rgba(255, 201, 7, 0.45);
+    overflow-y: auto;
+    padding-bottom: 0;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
+}
+
+#leaderboard-content:hover,
+#leaderboard-content:active {
+    scrollbar-color: #FFC907 #f1f1f1;
+}
+
+.leaderboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 12px;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 5;
+    border-bottom: 2px solid #FFC907;
+    margin-bottom: 10px;
+}
+
+.leaderboard-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #003366;
+    font-family: 'Baskerville', serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.leaderboard-droplet {
+    height: 57px;
+    width: 41.45px;
+}
+
+.leaderboard-list {
+    padding: 10px;
+}
+
+.leaderboard-item {
+    width: 100%;
+    height: 87.4px;
+    background: rgba(255, 201, 7, 0.1);
+    border: 2px solid #FFC907;
+    border-radius: 16px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.leaderboard-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(255, 201, 7, 0.3);
+}
+
+.leaderboard-item.highlight {
+    background: rgba(255, 201, 7, 0.3);
+    border-width: 3px;
+}
+
+.leaderboard-rank-icon {
+    height: 64px;
+    width: auto;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+
+.leaderboard-rank-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #003366;
+    font-family: 'Baskerville', serif;
+    width: 50px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.leaderboard-player {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+}
+
+.leaderboard-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #003366;
+    font-family: 'Baskerville', serif;
+}
+
+.leaderboard-level {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+.leaderboard-time {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2196F3;
+    font-family: 'Baskerville', serif;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* Scrollbar styling for Webkit browsers */
+#leaderboard-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#leaderboard-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+#leaderboard-content:hover::-webkit-scrollbar-track,
+#leaderboard-content:active::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#leaderboard-content::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+#leaderboard-content:hover::-webkit-scrollbar-thumb,
+#leaderboard-content:active::-webkit-scrollbar-thumb {
+    background: #FFC907;
+}
+
+#leaderboard-content::-webkit-scrollbar-thumb:hover {
+    background: #FFB000;
+}

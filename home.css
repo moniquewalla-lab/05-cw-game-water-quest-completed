@@ -1,0 +1,226 @@
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 40px 20px 30px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 100%);
+    position: relative;
+    z-index: 2;
+}
+
+#game-logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    max-width: 380px; /* Increased logo size */
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.hero-subtitle {
+    color: #1565C0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 15px 0 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Levels Container */
+.levels-container {
+    padding: 10px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Level Cards */
+.level-card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid #FFC907;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.level-card.unlocked {
+    cursor: pointer;
+    background: linear-gradient(135deg, #ffffff 0%, #fffef8 100%);
+}
+
+.level-card.unlocked:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 201, 7, 0.4);
+}
+
+.level-card.unlocked:active {
+    transform: translateY(-2px);
+}
+
+.level-card.locked {
+    opacity: 0.7;
+    border-color: #ddd;
+    background: #f8f8f8;
+}
+
+/* Level Overlay for Locked Levels */
+.level-overlay-lock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(200, 200, 200, 0.3);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 18px;
+}
+
+/* Level Badge */
+.level-badge {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.level-badge.locked-badge {
+    background: linear-gradient(135deg, #bbb 0%, #999 100%);
+}
+
+.level-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Level Info */
+.level-info {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.level-info h3 {
+    color: #003366;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    font-family: 'Baskerville', serif;
+}
+
+.level-desc {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0 0 8px 0;
+    font-style: italic;
+}
+
+.level-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #1565C0;
+    font-weight: 500;
+}
+
+.level-stats span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Level Status */
+.level-status {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.lock-icon {
+    width: 32px;
+    height: 32px;
+    opacity: 0.6;
+}
+
+.play-icon {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Scrollbar Styling */
+#levels-scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: #FFC907 #f1f1f1;
+}
+
+#levels-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+#levels-scroll-area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#levels-scroll-area::-webkit-scrollbar-thumb {
+    background: #FFC907;
+    border-radius: 10px;
+}
+
+#levels-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: #FFB000;
+}
+
+/* Animation for level cards on load */
+.level-card {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.level-card:nth-child(1) { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+.level-card:nth-child(2) { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+.level-card:nth-child(3) { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+.level-card:nth-child(4) { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+.level-card:nth-child(5) { animation-delay: 0.5s; opacity: 0; animation-fill-mode: forwards; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

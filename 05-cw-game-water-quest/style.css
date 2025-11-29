@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+#game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#levels-scroll-area {
+    margin-bottom: 20px;
+}
+
+#game-logo {
+    width: 100%;
+    height: auto;
+}
+
+.level-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: none;
+}
+
+.level-overlay.active {
+    display: block;
+}
+
+.lock-icon-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#nav-bar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #00796b;
+    padding: 10px 0;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+.nav-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-separator {
+    width: 1px;
+    background-color: #ffffff;
+    height: 24px;
+}
+
+.profile-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    margin-bottom: 15px;
+}
+
+.edit-button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #004d40;
+}

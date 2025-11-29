@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Start - Water Quest Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="level-start.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="level-start-content">
+            <div class="level-info-section">
+                <h1 class="level-title">Level <span id="level-number">1</span></h1>
+                
+                <hr class="level-divider">
+                
+                <div class="game-info">
+                    <p class="game-info-text">Goal : <span id="goal-points">20</span> points</p>
+                    <p class="game-info-text">Tap Rate : <span id="tap-rate">5</span> seconds</p>
+                </div>
+                
+                <div class="game-instructions">
+                    <p>Tap the <span class="blue-text">blue square</span> as fast as possible!</p>
+                    <p>Avoid tapping the <span class="green-text">green square</span>.</p>
+                    <p>Reach the goal before time runs out!</p>
+                </div>
+                
+                <button class="start-button" onclick="startGame()">Start Level</button>
+                <button class="back-button" onclick="goBack()">Back to Levels</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get level from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const level = urlParams.get('level') || '1';
+        
+        // Update level number
+        document.getElementById('level-number').textContent = level;
+        
+        // Level configurations
+        const levelConfig = {
+            '1': { goal: 20, tapRate: 4 },
+            '2': { goal: 30, tapRate: 3.5 },
+            '3': { goal: 40, tapRate: 3 },
+            '4': { goal: 50, tapRate: 2.5 },
+            '5': { goal: 60, tapRate: 2 }
+        };
+        
+        // Update goal and tap rate
+        const config = levelConfig[level] || levelConfig['1'];
+        document.getElementById('goal-points').textContent = config.goal;
+        document.getElementById('tap-rate').textContent = config.tapRate;
+        
+        function startGame() {
+            window.location.href = 'game.html?level=' + level;
+        }
+        
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

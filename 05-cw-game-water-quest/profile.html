@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Water Quest Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="profile-container">
+        <h1>User Profile</h1>
+        <div id="user-info">
+            <h2>Username: <span id="username">Player1</span></h2>
+            <h3>Email: <span id="email">player1@example.com</span></h3>
+        </div>
+        <div id="game-statistics">
+            <h2>Game Statistics</h2>
+            <p>Levels Completed: <span id="levels-completed">3</span></p>
+            <p>Total Score: <span id="total-score">1500</span></p>
+            <p>Time Played: <span id="time-played">5 hours</span></p>
+        </div>
+        <div id="edit-profile">
+            <h2>Edit Profile</h2>
+            <button id="edit-button">Edit Profile</button>
+        </div>
+    </div>
+    <div id="nav-bar">
+        <div class="nav-item home"><img src="img/home-fill.png" alt="Home"></div>
+        <div class="nav-separator"></div>
+        <div class="nav-item leaderboard"><img src="img/leaderboard-line.png" alt="Leaderboard"></div>
+        <div class="nav-separator"></div>
+        <div class="nav-item profile"><img src="img/profile-line.png" alt="Profile"></div>
+        <div class="nav-separator"></div>
+        <div class="nav-item charitywater"><img src="img/charity_water-line.png" alt="Charity:Water"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Navigation click handlers
+        document.querySelector('.nav-item.home').onclick = function() {
+            window.location.href = 'index.html';
+        };
+        document.querySelector('.nav-item.leaderboard').onclick = function() {
+            window.location.href = 'leaderboard.html';
+        };
+        document.querySelector('.nav-item.profile').onclick = function() {
+            window.location.href = 'profile.html';
+        };
+    </script>
+</body>
+</html>
