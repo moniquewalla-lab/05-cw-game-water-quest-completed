@@ -37,6 +37,34 @@ function checkWaterMasterAchievement() {
     }
 }
 
+// Add this function to call when a level is actually completed in your game
+function completeLevelWithStats(level, timeInSeconds, score) {
+    // Mark level completed
+    markLevelCompleted(level);
+    
+    // Unlock next level
+    const currentUnlocked = parseInt(localStorage.getItem('unlockedLevel') || '1');
+    if (level >= currentUnlocked) {
+        localStorage.setItem('unlockedLevel', level + 1);
+    }
+    
+    // Update fastest time (if better)
+    const currentFastest = parseInt(localStorage.getItem('fastestTime') || '999999');
+    if (timeInSeconds < currentFastest) {
+        localStorage.setItem('fastestTime', timeInSeconds.toString());
+    }
+    
+    // Update high score (if better)
+    const currentHighScore = parseInt(localStorage.getItem('highScore') || '0');
+    if (score > currentHighScore) {
+        localStorage.setItem('highScore', score.toString());
+    }
+    
+    // Check achievements
+    checkSpeedDemonAchievement(timeInSeconds);
+    checkWaterMasterAchievement();
+}
+
 // Add click handler for level 1 container
 document.addEventListener('DOMContentLoaded', function() {
     const level1Container = document.querySelector('#level1-container');
@@ -48,5 +76,24 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add pointer cursor to indicate it's clickable
         level1Container.style.cursor = 'pointer';
+    }
+});
+
+// Reset function for testing - call from browser console
+function resetGameProgress() {
+    localStorage.clear();
+    console.log('Game progress reset!');
+    location.reload();
+}
+
+// Make it globally accessible
+window.resetGameProgress = resetGameProgress;
+
+// Keyboard shortcut for reset (Ctrl+Shift+R)
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+        if (confirm('Reset all game progress?')) {
+            resetGameProgress();
+        }
     }
 });
