@@ -145,16 +145,58 @@
             
             for (let i = 1; i <= 5; i++) {
                 const card = document.getElementById(`level${i}-card`);
+                const statusDiv = card.querySelector('.level-status');
+                const badge = card.querySelector('.level-badge');
+                
                 if (i <= unlockedLevel) {
+                    // Unlock the level
                     card.classList.remove('locked');
                     card.classList.add('unlocked');
+                    
+                    // Remove locked-badge class
+                    if (badge) {
+                        badge.classList.remove('locked-badge');
+                    }
+                    
+                    // Remove overlay if it exists
+                    const overlay = card.querySelector('.level-overlay-lock');
+                    if (overlay) {
+                        overlay.remove();
+                    }
+                    
+                    // Replace lock icon with play icon
+                    statusDiv.innerHTML = '<span class="play-icon">▶</span>';
+                    
+                    // Make it clickable
                     card.onclick = function() {
                         window.location.href = `level-start.html?level=${i}`;
                     };
+                    
+                    // Add pointer cursor
+                    card.style.cursor = 'pointer';
                 } else {
+                    // Keep the level locked
                     card.classList.remove('unlocked');
                     card.classList.add('locked');
+                    
+                    // Add locked-badge class
+                    if (badge) {
+                        badge.classList.add('locked-badge');
+                    }
+                    
+                    // Ensure overlay exists
+                    if (!card.querySelector('.level-overlay-lock')) {
+                        const overlay = document.createElement('div');
+                        overlay.className = 'level-overlay-lock';
+                        card.appendChild(overlay);
+                    }
+                    
+                    // Ensure lock icon is shown
+                    statusDiv.innerHTML = '<img src="img/lock-2-line.png" class="lock-icon" alt="Locked">';
+                    
+                    // Remove click handler
                     card.onclick = null;
+                    card.style.cursor = 'default';
                 }
             }
         });

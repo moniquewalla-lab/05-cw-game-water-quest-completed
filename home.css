@@ -86,7 +86,7 @@
 .level-badge {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #bbb 0%, #999 100%); /* Default locked state */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -97,8 +97,17 @@
     z-index: 2;
 }
 
+/* Apply gradient to unlocked level badges */
+.level-card.unlocked .level-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
 .level-badge.locked-badge {
     background: linear-gradient(135deg, #bbb 0%, #999 100%);
+}
+
+.level-badge.locked-badge .level-number {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .level-number {
@@ -123,11 +132,19 @@
     font-family: 'Baskerville', serif;
 }
 
+.level-card.locked .level-info h3 {
+    color: #999;
+}
+
 .level-desc {
     color: #666;
     font-size: 0.9rem;
     margin: 0 0 8px 0;
     font-style: italic;
+}
+
+.level-card.locked .level-desc {
+    color: #aaa;
 }
 
 .level-stats {
@@ -136,6 +153,10 @@
     font-size: 0.85rem;
     color: #1565C0;
     font-weight: 500;
+}
+
+.level-card.locked .level-stats {
+    color: #aaa;
 }
 
 .level-stats span {
