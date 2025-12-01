@@ -141,6 +141,104 @@
 
     <script src="script.js"></script>
     <script>
+        // Load and display player stats
+        function loadPlayerStats() {
+            const playerName = localStorage.getItem('playerName') || 'User Name';
+            const highScore = parseInt(localStorage.getItem('highScore')) || 0;
+            const fastestTime = parseInt(localStorage.getItem('fastestTime')) || 0;
+            const levelsCompleted = parseInt(localStorage.getItem('levelsCompleted')) || 1; // Default to 1
+
+            // Update profile name
+            document.querySelector('.profile-name').textContent = playerName;
+
+            // Update stats
+            document.querySelector('.stat-card:nth-child(2) .stat-value').textContent = 
+                fastestTime > 0 ? Math.floor(fastestTime / 60) + ':' + (fastestTime % 60).toString().padStart(2, '0') : '0:00';
+            document.querySelector('.stat-card:nth-child(3) .stat-value').textContent = highScore;
+            document.querySelector('.stat-card:nth-child(4) .stat-value').textContent = 
+                levelsCompleted + '/5';
+
+            // Update level progress bars
+            updateLevelProgress(levelsCompleted);
+
+            // Check and unlock achievements
+            checkAchievements(levelsCompleted, fastestTime);
+        }
+
+        // Update level progress bars
+        function updateLevelProgress(levelsCompleted) {
+            const progressItems = document.querySelectorAll('.progress-item');
+            
+            for (let i = 0; i < progressItems.length; i++) {
+                const levelNumber = i + 1;
+                const progressFill = progressItems[i].querySelector('.progress-fill');
+                const progressPercentage = progressItems[i].querySelector('.progress-percentage');
+                
+                // Level 1 is always available/unlocked (100%)
+                // Completed levels also show 100%
+                if (levelNumber === 1 || levelNumber <= levelsCompleted) {
+                    progressFill.style.width = '100%';
+                    progressPercentage.textContent = '100%';
+                } else {
+                    progressFill.style.width = '0%';
+                    progressPercentage.textContent = '0%';
+                }
+            }
+        }
+
+        // Check achievement conditions and unlock them
+        function checkAchievements(levelsCompleted, fastestTime) {
+            // First Win - Complete your first level
+            if (levelsCompleted >= 1) {
+                unlockAchievement('first-win-badge');
+            }
+
+            // Speed Demon - Complete any level in under 30 seconds
+            if (fastestTime > 0 && fastestTime < 30) {
+                unlockAchievement('speed-demon-badge');
+            }
+
+            // Perfect Score - Check if perfect score was achieved
+            if (localStorage.getItem('perfectScore') === 'true') {
+                unlockAchievement('perfect-score-badge');
+            }
+
+            // Water Master - Complete all 5 levels
+            if (levelsCompleted >= 5) {
+                unlockAchievement('water-master-badge');
+            }
+        }
+
+        // Unlock an achievement badge
+        function unlockAchievement(badgeId) {
+            const badge = document.getElementById(badgeId);
+            if (badge && badge.classList.contains('locked')) {
+                badge.classList.remove('locked');
+                badge.classList.add('unlocked');
+                localStorage.setItem(badgeId, 'unlocked');
+            }
+        }
+
+        // Load saved achievement states
+        function loadAchievementStates() {
+            const achievements = ['first-win-badge', 'speed-demon-badge', 'perfect-score-badge', 'water-master-badge'];
+            achievements.forEach(badgeId => {
+                if (localStorage.getItem(badgeId) === 'unlocked') {
+                    const badge = document.getElementById(badgeId);
+                    if (badge) {
+                        badge.classList.remove('locked');
+                        badge.classList.add('unlocked');
+                    }
+                }
+            });
+        }
+
+        // Initialize profile on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAchievementStates();
+            loadPlayerStats();
+        });
+
         // Navigation click handlers
         document.querySelector('.nav-item.home').onclick = function() {
             window.location.href = 'index.html';
