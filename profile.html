@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Water Quest Game</title>
+    <title>Player Profile - Water Quest</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="profile.css">
 </head>
@@ -154,98 +154,6 @@
         document.querySelector('.nav-item.charitywater').onclick = function() {
             window.location.href = 'charitywater.html';
         };
-
-        // Load and display achievements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load unlocked level to determine progress
-            const unlockedLevel = parseInt(localStorage.getItem('unlockedLevel') || '1');
-            
-            // Update fastest time
-            const fastestTime = parseInt(localStorage.getItem('fastestTime') || '0');
-            const fastestTimeElement = document.querySelector('.stat-card:nth-child(2) .stat-value');
-            if (fastestTimeElement) {
-                if (fastestTime > 0) {
-                    const minutes = Math.floor(fastestTime / 60);
-                    const seconds = fastestTime % 60;
-                    fastestTimeElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-                } else {
-                    fastestTimeElement.textContent = '0:00';
-                }
-            }
-            
-            // Update high score
-            const highScore = parseInt(localStorage.getItem('highScore') || '0');
-            const highScoreElement = document.querySelector('.stat-card:nth-child(3) .stat-value');
-            if (highScoreElement) {
-                highScoreElement.textContent = highScore;
-            }
-            
-            // Update level progress bars
-            const progressItems = document.querySelectorAll('.progress-item');
-            progressItems.forEach((item, index) => {
-                const levelNumber = index + 1;
-                // A level is completed if the next level is unlocked
-                const isCompleted = levelNumber < unlockedLevel;
-                const percentage = isCompleted ? 100 : 0;
-                
-                const percentageSpan = item.querySelector('.progress-percentage');
-                const progressFill = item.querySelector('.progress-fill');
-                
-                percentageSpan.textContent = percentage + '%';
-                progressFill.style.width = percentage + '%';
-            });
-
-            // Update levels completed stat (completed = unlocked - 1)
-            const levelsCompleted = Math.max(0, unlockedLevel - 1);
-            const levelsCompletedStat = document.querySelector('.stat-card:nth-child(4) .stat-value');
-            if (levelsCompletedStat) {
-                levelsCompletedStat.textContent = levelsCompleted + '/5';
-            }
-            
-            // Load achievements
-            const firstWinBadge = document.getElementById('first-win-badge');
-            const speedDemonBadge = document.getElementById('speed-demon-badge');
-            const perfectScoreBadge = document.getElementById('perfect-score-badge');
-            const waterMasterBadge = document.getElementById('water-master-badge');
-            
-            let achievements = JSON.parse(localStorage.getItem('achievements') || '{}');
-            
-            // Check if player has completed at least one level (unlocked level 2 or higher)
-            if (unlockedLevel >= 2) {
-                achievements['first-win'] = { unlocked: true };
-                localStorage.setItem('achievements', JSON.stringify(achievements));
-            }
-            
-            // Check if all levels completed
-            if (unlockedLevel > 5) {
-                achievements['water-master'] = { unlocked: true };
-                localStorage.setItem('achievements', JSON.stringify(achievements));
-            }
-            
-            if (achievements['first-win']?.unlocked) {
-                firstWinBadge.classList.remove('locked');
-            } else {
-                firstWinBadge.classList.add('locked');
-            }
-            
-            if (achievements['speed-demon']?.unlocked) {
-                speedDemonBadge.classList.remove('locked');
-            } else {
-                speedDemonBadge.classList.add('locked');
-            }
-            
-            if (achievements['perfect-score']?.unlocked) {
-                perfectScoreBadge.classList.remove('locked');
-            } else {
-                perfectScoreBadge.classList.add('locked');
-            }
-            
-            if (achievements['water-master']?.unlocked) {
-                waterMasterBadge.classList.remove('locked');
-            } else {
-                waterMasterBadge.classList.add('locked');
-            }
-        });
     </script>
 </body>
 </html>
